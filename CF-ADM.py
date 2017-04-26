@@ -13,8 +13,7 @@ from random import randint
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-def fast_similarity(ratings, kind='user', epsilon=1e-9):
-    # epsilon -> small number for handling dived-by-zero errors
+def similarity(ratings, kind='user', epsilon=1e-9):
     if kind == 'user':
         sim = ratings.dot(ratings.T) + epsilon
     elif kind == 'item':
@@ -31,9 +30,9 @@ def rmse1(prediction, test):
     return np.sqrt(((prediction - test) ** 2).mean())
 # ============================================================                 
 # Read all three datasets
-ratings = pd.read_csv('/Users/Dovla/Downloads/BX-CSV-DUMP/BX-Book-Ratings.csv', sep=';', encoding='latin1')
-books = pd.read_csv('/Users/Dovla/Downloads/BX-CSV-DUMP/BX-Books.csv', sep=';', encoding='latin1', error_bad_lines=False, warn_bad_lines=False)
-users = pd.read_csv('/Users/Dovla/Downloads/BX-CSV-DUMP/BX-Users.csv', sep=';', encoding='latin1', error_bad_lines=False, warn_bad_lines=False)
+ratings = pd.read_csv('BX-Book-Ratings.csv', sep=';', encoding='latin1')
+books = pd.read_csv('BX-Books.csv', sep=';', encoding='latin1', error_bad_lines=False, warn_bad_lines=False)
+users = pd.read_csv('BX-Users.csv', sep=';', encoding='latin1', error_bad_lines=False, warn_bad_lines=False)
 # Drop zero ratings as they represent nothing really
 ratings.drop(ratings[ratings['Book-Rating'] < 1].index, inplace=True)
 # Count how many books each user rated
@@ -48,11 +47,11 @@ ratingsISBNGroup = ratings.groupby(ratings['ISBN'], as_index=False)['Book-Rating
 # Sort starting with books with highest number of ratings
 ratingsISBNGroupSort = ratingsISBNGroup.sort_values(['Book-Rating'], ascending=False)
 # Select books that are rated more than X times, 10 as optimal speed/quality contraint
-topBooks = ratingsISBNGroupSort[ratingsISBNGroupSort['Book-Rating'] > 20]
+topBooks = ratingsISBNGroupSort[ratingsISBNGroupSort['Book-Rating'] > 10]
 # Select same topBooks but with data about user rating count
 topBooksAllData = ratingsAndUserCount[ratingsAndUserCount['ISBN'].isin(topBooks['ISBN'])]
 # From topBooks select only those users who rated more than X books, 10 as optimal speed/quality constraint
-filteredRatings = pd.DataFrame(topBooksAllData[topBooksAllData['Book-Rating_y'] > 20])
+filteredRatings = pd.DataFrame(topBooksAllData[topBooksAllData['Book-Rating_y'] > 10])
 #Clean columns names
 colnames = ['User-ID','ISBN','Book-Rating', 'UserRatingCount']
 filteredRatings.columns = colnames
@@ -121,7 +120,7 @@ for i in range(kfolds):
 
 # ============================================================
 # generate cosine similarity matrix
-    sim = fast_similarity(trainMatrixDfMinMeanZ)
+    sim = similarity(trainMatrixDfMinMeanZ)
 # Set minimum value in similarity at 0 (negatives turned to 0)
     simMinZero = sim.clip(min = 0)
 
