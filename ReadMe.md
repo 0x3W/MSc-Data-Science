@@ -43,3 +43,10 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 [Data Management for Data Science](http://datascience.i3s.uniroma1.it/it/node/5619)
 
 [Statistical Methods in Data Science and Laboratory II](http://datascience.i3s.uniroma1.it/it/node/5617)
+
+### Semester III - Fall 2017
+
+Data Privacy and Security
+Social and behvioral networks
+Bioinformatics
+Big Data for Smart Cities
