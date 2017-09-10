@@ -12,8 +12,7 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
     5. Books Clustering II
     6. Logistic Regression / Binary classification 
     7. Dimensionality Reduction
-  - Final Project
-    Kaggle Exercise House Prices: Advanced Regression Techniques
+  - [Final Project] (https://github.com/Affliction123/Data-Science-Masters/blob/master/FDS-Final%20Project.py) based on [Kaggle Exercise on House Prices] (https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
   - Lab
   
 #### [Algorithmic Methods of Data Mining and Laboratory](http://datascience.i3s.uniroma1.it/it/node/5597)
