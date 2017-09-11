@@ -136,3 +136,51 @@ if req.find('vegetarian') > 0:
     else:
         myset = myset.intersection(vgt_recipes)
 
+
+#%% print result
+recipes_found = set()
+if len(myset) == 0:
+    print("I'm sorry, your research didn't give any result")
+else:
+    for i in myset:
+        recipes_found.add(ricette[i]['Name'])
+        print(ricette[i]['Name'])
+    print('I found ', len(myset), ' recipes\nIf you are interested in one them press "y", else press "n"')
+    cnt = str
+    while cnt != 'y' or cnt != 'n':
+        cnt = input()
+        if cnt == 'y':
+            print('Copy and past the name of the recipe of interest to see how to prepare it')
+            y = input()
+            while y not in recipes_found:
+                print('Ops, be sure to copy it well, check capital letters')
+                y = input()
+            for k in ricette.keys():
+                if ricette[k]['Name'] == str(y):
+                    print('Title of recipe: ',ricette[k]['Name'])
+                    print('Written by ', ricette[k]['Author'],'\n')
+                    print('People served: ', ricette[k]['Serves'])
+                    print('Time of preparation: ', ricette[k]['PrepTime'])
+                    print('Time of cooking: ', ricette[k]['CookTime'],'\n')
+                    print('Ingredients you need: ', ricette[k]['Ingredients'],'\n')
+                    print('Method: ', ricette[k]['Method'],'\n')
+                    print('Is it enough? If you want to find recipes similar to it press "find": ')
+                    cnt = input()
+                    if cnt == 'find':
+                        lst = []
+                        for x in norm_data:
+                            a = norm_data[k].values
+                            b = norm_data[str(x)].values
+                            cos = lb.cosine_similarity(a,b)
+                            lst.append([x, cos])
+                        lst.sort(key = lambda x: x[1], reverse = True)
+                        for x in lst[:10]:
+                            if math.fabs(x[1]) > 0.50 and x[0] != k:
+                                print(ricette[x[0]]['Name'],' is similar at: ', x[1])
+            break
+        else:
+            if cnt == 'n':
+                print('Thanks anyway')
+                break
+        print('Opss, something goes wrong, try again (y/n): ')
+       
