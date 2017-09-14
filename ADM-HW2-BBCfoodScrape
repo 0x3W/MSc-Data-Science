@@ -77,3 +77,82 @@ def extract_All(recipe):
     
 # In[8]:
 
+def extract_Info(L):
+    from collections import OrderedDict
+    dict = OrderedDict()
+    dict['Name'] = L[0]
+    dict['Author'] = L[1]
+    dict['PrepTime'] = L[2]
+    dict['CookTime'] = L[3]
+    dict['Serves'] = L[4]
+    dict['Dietary'] = L[5]
+    dict['Ingredients'] = L[6]
+    dict['Method'] = L[7]
+    return dict
+    
+# In[13]:
+
+# ingredients = list(ingredients)
+
+# In[273]:
+
+#all_recipes = set()
+#count = 1
+#for i in ingredients[:]:
+#    try:
+#        all_recipes = all_recipes.union(extract_recipe(i))
+#        if(len(all_recipes)==11224):
+#            break
+#        print(count,' -Ingrediente: '+i+ ' -Num. ricette trovate: ', len(all_recipes))
+#        count += 1
+#    except IndexError:
+#        continue   
+
+
+# In[119]:
+
+#recipes = list(all_recipes)
+##info_recipes = {}
+#for x in recipes:
+#    pos = recipes.index(x)
+#    print(pos,' -Ricetta: '+x)
+#    info_recipes[x] = extract_Info(extract_All(x))
+
+# In[] ############################################
+
+
+#ricette = info_recipes
+#for i in info_recipes.keys():
+#    ricette[i]['Name'] = info_recipes[i]['Name']
+#    ricette[i]['Author'] = info_recipes[i]['Author'] 
+#    ricette[i]['PrepTime'] = info_recipes[i]['PrepTime'] 
+#    ricette[i]['CookTime'] = info_recipes[i]['CookTime'] 
+#    ricette[i]['Serves'] = info_recipes[i]['Serves'] 
+#    ricette[i]['Dietary'] = info_recipes[i]['Dietary'] 
+#    ricette[i]['Ingredients'] = ('').join(info_recipes[i]['Ingredients'])
+#    ricette[i]['Method'] = info_recipes[i]['Method'].replace('\r','')
+
+
+# pd.DataFrame.from_dict(ricette, orient = 'index').to_csv('df_ricepes.csv', index = True)
+
+
+def cosine_similarity(a, b):
+    return sum([i*j for i,j in zip(a, b)])/(math.sqrt(sum([i*i for i in a]))*math.sqrt(sum([i*i for i in b])))
+
+    
+#dict_ingr = {}
+#f = open('/Users/manfr/Desktop/ADM-Algorithmic Methods of Data Mining/HW02/Inv_Index_Ingr.csv', 'r')
+#for row in csv.reader(f):
+#    dict_ingr[''.join(row).split(';')[1]] = ''.join(row).split(';')[0]
+#f.close()
+
+
+#my_dict = dict()
+#for k in ricette.keys():
+#    query = ricette[k]['Ingredients'].lower()
+#    l = []
+#    for v in dict_ingr.keys():
+#        pos = query.find(v)
+#        if pos > 0:
+#            l.append(int(dict_ingr[query[pos:pos+len(v)]]))
+#            my_dict[k] = l
