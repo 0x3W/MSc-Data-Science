@@ -1,0 +1,16 @@
+import math
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+#
+#from string import ascii_lowercase
+#ingredients= set()
+#for c in ascii_lowercase:
+#    print("fetcing letter " + c)
+#    url = requests.get("http://www.bbc.co.uk/food/ingredients/by/letter/" + c)
+#    soup = BeautifulSoup(url.text, "lxml") 
+#    data = soup.find_all("li", {"class":"resource food"})
+#    for link in data:
+#        ingredients.add(link.get('id'))
+# 
+# In[268]:
