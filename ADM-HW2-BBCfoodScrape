@@ -14,3 +14,29 @@ from bs4 import BeautifulSoup
 #        ingredients.add(link.get('id'))
 # 
 # In[268]:
+def extract_recipe(ingredient):
+    url_1 = requests.get("http://www.bbc.co.uk/food/"+ingredient)
+    soup_1 = BeautifulSoup(url_1.text, 'lxml')
+    g_data_1 = soup_1.find_all("a", {"class":"see-all-search"})
+    recipes = set()
+    if len(g_data_1) != 0:
+        key = g_data_1[0].get('href')[30:]
+        url_2 = requests.get("http://www.bbc.co.uk/food/recipes/search?keywords="+key)
+        soup_2 = BeautifulSoup(url_2.text, 'lxml')
+        g_data_2 = soup_2.find_all("div", {"class":"left"})
+        for item in g_data_2:
+            recipes.add(item.contents[0].find_all("a")[0].get('href')[14:])
+        next_page = soup_2.find_all("ol", {"class":"pagInfo-page-numbers"})
+        i = 2
+        while(next_page[1].contents[-1] != 'Next'):
+            url_3 = requests.get("http://www.bbc.co.uk/food/recipes/search?page="+str(i)+"&keywords="+key)
+            soup_3 = BeautifulSoup(url_3.text, 'lxml')
+            g_data_3 = soup_3.find_all("div", {"class":"left"})
+            next_page = soup_3.find_all("ol", {"class":"pagInfo-page-numbers"})
+            for item in g_data_3:
+                recipes.add(item.contents[0].find_all("a")[0].get('href')[14:])
+                next_page = soup_3.find_all("li", {"class":"pagInfo-page-numbers-next"})
+            i += 1
+    return recipes
+# In[ Extract-All-Info]
+
