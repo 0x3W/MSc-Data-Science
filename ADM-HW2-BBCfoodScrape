@@ -156,3 +156,16 @@ def cosine_similarity(a, b):
 #        if pos > 0:
 #            l.append(int(dict_ingr[query[pos:pos+len(v)]]))
 #            my_dict[k] = l
+
+def find_recipes_with(dict_ingr,dict_recipe,ingredient):
+    key = dict_ingr[ingredient]
+    l = set()
+    #for k,v in dict_recipe.items():
+    #    if key in v:
+    #        l.add(k)
+    #return l
+    for k,v in dict_recipe.items():
+        if key in k:
+            l.add(v)
+    return l
+#pd.DataFrame.from_dict(dict_ingr, orient = 'index').to_csv('dict_ingr.csv', index = True, header = False)
