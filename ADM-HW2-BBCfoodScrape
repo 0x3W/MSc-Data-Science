@@ -40,3 +40,40 @@ def extract_recipe(ingredient):
     return recipes
 # In[ Extract-All-Info]
 
+def extract_All(recipe):
+    url = requests.get("http://www.bbc.co.uk/food/recipes/"+recipe)
+    soup = BeautifulSoup(url.text, 'lxml')
+    l = []
+    l.append(soup.title.contents[0][21:])
+    g_data = soup.find_all("a", {"class":"chef__link","itemprop":"author"})
+    if g_data == []:
+        l.append('Unknown')
+    else:
+        l.append(g_data[0].text)
+    classi = ['recipe-metadata__prep-time','recipe-metadata__cook-time','recipe-metadata__serving']
+    for i in classi:
+        g_data = soup.find_all("p", {"class":i})
+        if g_data == []:
+            l.append('Unknown')
+        else:
+            l.append(g_data[0].text)
+    g_data = soup.find_all("div", {"class":"recipe-metadata__dietary"})
+    if g_data == []:
+        l.append('Unspecified')
+    else:
+        l.append(g_data[0].find_all('a')[0].get('href')[12:])
+    ingredients = []
+    g_data = soup.find_all("li", {"class":"recipe-ingredients__list-item"})
+    for item in g_data:
+        ingredients.append(item.text)
+    l.append(ingredients)
+    g_data = soup.find_all("ol", {"class":"recipe-method__list"})
+    if g_data == []:
+        l.append('Unknown')
+    else:
+        l.append(g_data[0].text.replace("\n", ""))
+    return l
+
+    
+# In[8]:
+
