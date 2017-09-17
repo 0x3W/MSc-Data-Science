@@ -14,4 +14,19 @@ def prime(n):
 	elif n < 9:
 		print("Prime")
 		sys.exit()
-	
+	elif n%3 == 0: 
+		print("3")
+		sys.exit()
+	sqRt = int(n**0.5)
+	i = 5
+	while i <= sqRt:
+		if n%i == 0: 
+			print(i)
+			sys.exit()
+		elif n%(i+2) == 0:
+			print(i+2)
+			sys.exit()
+		else:
+			i +=6
+	print("Prime")     
+prime(p)
