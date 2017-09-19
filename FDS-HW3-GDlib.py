@@ -30,5 +30,24 @@ def descent(y, x, alpha=1e-3, itr=1e2, eps=1e-6):
 
     # Return the final thetas
     return theta.ravel()
+def r2(y, c, x):
+    # Compute the predictions
+    predictions = np.dot(np.hstack((np.ones((x.shape[0], 1)), x)), c)
+
+    # Mean of the observed data
+    ymean = np.mean(y)
+
+    # Total sum of squares
+    SStotal = np.sum(np.square(y - ymean))
+
+    # Residual sum of squares
+    SSresiduals = np.sum(np.square(y - predictions))
+
+    return 1. - SSresiduals / SStotal
+
+
+def predict(x, theta):
+    X = np.hstack((np.ones((x.shape[0], 1)), x))
+    return np.dot(X, theta)
 
 
