@@ -29,3 +29,20 @@ How is data transfered through the network?
 --- Queing: a = average packet arrival rate, traffic intensity = La/R. eg. La/R > 1 more work arrive then proccessed, queing forever.
 Curcuit switching vs Packet switching on 1 Mbit Link each user has 100Kbps when active, and its active 10% of time.
 - Curcuit: 10 users vs Packet: 35 users (prob > 10 active less than 0.004)
+Transport layer
+Network applications
+Network application - communicating distributed processes: running in network hosts in "user space", implement messages to implement app, eg email, the Web, file transfer
+Application-layer protocol: one piece of an app, defines messages exchanged by apps and actions taken, user services provided by lower protocol
+A process is a program that is running within host. Within the same host, two processes communicate with interprocess communication defined by OS. Processes running in different hosts communicate with application-layer protocol.
+A user agent is an interface between the user and the network application. Web:browser, Email: mail reader, etc..
+Client-server paradigm: Network app has two pieces client and server.
+Client initiates contact with the server, typically requests a service, for web client is implement in browser, for email in mail reader.
+Server provides requests service to client. eg Webserver sends requested Web page, mail server delivers email.
+Transport services and protocols
+Provide logical communication between app processes running on different hosts, transport protocols run in end systems, transport (data transfer between processes) vs network layer (data transfer between end systems)
+Transport layer protocols: User Datagram Protocol (UDP) which is unordered and unreliable data delivery, Transmission Control Protocol which is relible in order data delivery (congestion, flow control, connection setup)
+Multiplexing is gathering data from multiple processes, enveloping data with header(later used for demultiplexing).
+Demultiplexing is delivering received segments to correct app layer processes.
+Multiplexing/demultiplexing is based on sender, receiver port numbers, IP addresses: source, dest ports #s in each segment, the port number identifies the process, well-known port numbers for specific applications (16 bit, 0-1023 well known, 1024-65535).
+UDP is "best effort" service, and its segments may be lost or delivered out of order. Its connection-less as there is no hand-shaking between sender and receiver, each UDP segment handled independently of others. Why is there UDP? No connection means less delay, simple as there is no state at either sender or receiver, small segment format, no congestion control, UDP may blast as fast as desired. Its often used for streaming multimedia apps (loss tolerant, rate sensitive), relible transfer over UDP: add relibility at application layer.
+UDP checksum exists to detect errors (eg. flipped bits) in transmitted segment. Sender treat segment context as sequence of 16-bit integers, checksum: addition (1's complement sum) of segment contents, sender puts checksum value in UDP checksum field. Receiver computes checksum of received segment, check if computed sum equals checksum value in field, means error detected, yes means no error detected.
