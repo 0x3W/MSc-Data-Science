@@ -48,3 +48,8 @@ UDP is "best effort" service, and its segments may be lost or delivered out of o
 UDP checksum exists to detect errors (eg. flipped bits) in transmitted segment. Sender treat segment context as sequence of 16-bit integers, checksum: addition (1's complement sum) of segment contents, sender puts checksum value in UDP checksum field. Receiver computes checksum of received segment, check if computed sum equals checksum value in field, means error detected, yes means no error detected.
 
 ## Lecture 3 - Transport Control Protocol (TCP)
+Characteristics of unrelible channel will determine complexity of relible data transfer protocol (rdt): errors, delays, packet loss.
+Bit errors: Underlying channel may flip bits in packet. Recall: UDF checksum to detect errors.
+ACK: Acknowledgment receiver explicitly tells sender that packets received OK
+NAK: Negative Acknowledgement receiver explicitly tells sender that packets received are not ok. Sender retransmits packet on NAK.
+If NAK/ACK are corrupted sender will retransmit packets, which may cause possible duplicate packets.
