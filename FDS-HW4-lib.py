@@ -105,3 +105,30 @@ def single_linkage(D, k):
         i = i + 1
     return D, unRavels
 
+def single_linkage2(D, k):
+    min_point = np.argmin(D, axis=1)
+    points = [(row, p) for row, p in enumerate(min_point)]
+    index1 = np.arange(len(D))
+    
+    #posit1 = np.arange(a-1)
+
+    points1 = []
+    for c in range(len(points)):
+        points1.append(D[points[c]])
+    
+
+    pdf1 = pd.DataFrame(
+    {'lst1Tite': points,
+     'lst2Tite': points1,
+     'lst3Tite': index1,
+    })
+    #print(pdf1)
+
+    pdf2 = pdf1.sort_values(by=['lst2Tite'], ascending=[1])
+    #print(pdf2)
+
+    pdf2list = pdf2['lst3Tite'].tolist()
+    #print(len(pdf2list))
+    mlt = len(pdf2list)//k
+    new_list = [pdf2list[i:i+mlt] for i in range(0, len(pdf2list), mlt)]
+    return new_list
