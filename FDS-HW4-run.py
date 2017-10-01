@@ -38,4 +38,14 @@ for i in range(a):
     else:
         i = i + 1
 
+print(sorted(bagsLength, reverse=True))
+
+jacArr = np.array(jacResults)
+shape = (a,a)
+arr1 = jacArr.reshape(shape)
+#print(arr1[0:,0:])
+np.set_printoptions(precision=2)
+print(arr1[1:,1:])
+print(np.mean(arr1[1:,1:]))
+
 
