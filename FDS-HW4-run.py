@@ -48,4 +48,12 @@ np.set_printoptions(precision=2)
 print(arr1[1:,1:])
 print(np.mean(arr1[1:,1:]))
 
+finMat = arr1[1:,1:]
+
+remPositions, clustPositions = mylib.single_linkage(finMat, k = 3)
+#print(remPositions)
+print(clustPositions)
+
+impl2 = mylib.single_linkage2(finMat, k=3)
+print(impl2)
 
