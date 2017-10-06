@@ -20,3 +20,13 @@ def charfreq(filename, filter):
         fv[i] = dc[filter[i]]
     return fv/fv.sum() if fv.sum() > 0 else fv
 
+def euc(x, y):
+    return np.sqrt(np.sum((x - y)**2))
+
+def cldist(c1, c2):
+    d = np.infty
+    for x in c1:
+        for y in c2:
+            d = min(d, euc(x,y))
+    return d
+
