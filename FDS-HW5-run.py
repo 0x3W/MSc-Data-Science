@@ -12,3 +12,14 @@ import lib1772953 as lib
 files = sys.argv[1:-2]
 filter = sys.argv[-2]
 nrClst = int(sys.argv[-1])
+
+points = []
+for f in files:
+    points.append([lib.charfreq(f, filter)])
+    
+clusters = lib.single_linkage(points, nrClst)
+for i in range(len(clusters)):
+    namedClst = []
+    for j in clusters[i]:
+        namedClst.append(files[j])
+    print(namedClst)
