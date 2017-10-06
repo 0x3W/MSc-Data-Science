@@ -30,3 +30,23 @@ def cldist(c1, c2):
             d = min(d, euc(x,y))
     return d
 
+def closest(L):
+    d = np.infty
+    for i in range(len(L)):
+        for j in range(len(L)):
+            if i != j:
+                if cldist(L[i],L[j]) < d:
+                    d = cldist(L[i],L[j])
+                    a, b = i, j
+    return(a, b)
+
+def single_linkage(L, k):
+    seq = [[i] for i in range(len(L))]
+    points2 = L.copy()
+    while len(seq) > k:
+        fir, sec = closest(points2)
+        seq[fir] = seq[fir] + seq[sec]
+        del seq[sec]
+        points2[fir] = points2[fir] + points2[sec]
+        del points2[sec]
+    return seq
