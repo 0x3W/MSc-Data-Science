@@ -56,3 +56,13 @@ sec = pd.read_csv(sys.argv[2])
 fir.dropna(inplace=True) 
 sec.dropna(inplace=True)
 
+# Construct X, Y
+X = np.ones((fir.shape[0],fir.shape[1]))
+X[:,1:] = fir[(list(fir.columns.values[:-1]))].values[:fir.shape[0]]
+
+Y = fir[fir.columns.values.tolist()[-1]].values[:fir.shape[0]]
+
+# 1. Compute and print theta
+th = logfit(X, Y, alpha=0.001, itr=100) 
+print(th)
+
