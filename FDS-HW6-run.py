@@ -31,3 +31,28 @@ def logfit(X, Y, alpha=1, itr=10):
         Theta += alpha * gradient(Theta, X, Y)
     return Theta
 
+def normalize(X):
+    """Normalize an array, or a dataframe, to have mean 0 and stddev 1."""
+    return (X - np.mean(X, axis=0))/(np.std(X, axis=0))
+
+def tprfpr(P, Y):
+    """Return the False Positive Rate and True Positive Rate vectors of the given classifier."""
+    Ysort = Y[np.argsort(P)[::-1]]
+    ys = np.sum(Y)
+    tpr = np.cumsum(Ysort)/ys # [0, 0, 1, 2, 2, 3,..]/18
+    fpr = np.cumsum(1-Ysort)/(len(Y)-ys)
+    return (tpr, fpr)
+
+def auc(fpr, tpr):
+    """Compute the Area Under the Curve (AUC) given vectors of false positive rate and true positive rate"""
+    return(np.diff(tpr) * (1 - fpr[:-1])).sum()
+
+np.set_printoptions(precision = 2)
+
+# Select files, Read data in dfs
+fir = pd.read_csv(sys.argv[1])
+sec = pd.read_csv(sys.argv[2])
+
+fir.dropna(inplace=True) 
+sec.dropna(inplace=True)
+
