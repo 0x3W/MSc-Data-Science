@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Nov 30 10:56:10 2016
 
-@author: Dovla
-"""
 # Functions and libraries
 import numpy as np
 import pandas as pd
@@ -66,3 +60,26 @@ Y = fir[fir.columns.values.tolist()[-1]].values[:fir.shape[0]]
 th = logfit(X, Y, alpha=0.001, itr=100) 
 print(th)
 
+# Predict  
+P = h(th, X)
+tpr, fpr = tprfpr(P, Y)
+
+# 2. Save plot
+plt.plot(fpr, tpr) # ROC curve
+plt.title("ROC curve")
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
+plt.grid(True)
+plt.show(block=False)
+plt.savefig('1772953-roc.png')
+
+# 3. Print AUC
+print("AUC = ", auc(fpr, tpr)) 
+
+# Perform prediction on test dataset
+X2 = np.ones((sec.shape[0],sec.shape[1]+1))
+X2[:,1:] = sec[(list(sec.columns.values))].values[:sec.shape[0]]
+P2 = h(th, X2) 
+
+# 4. Print the scores
+print(P2)
