@@ -27,4 +27,27 @@ def achmat(D, d):
 def reduce(X, d):
     A = achmat(X.shape[1], d)
     return np.dot(X, A) / np.sqrt(d)
+ef distortion(dm1, dm2):
+    return((dm1+1e-16)/(dm2+1e-16))
+
+def first(r, data, redSize):
+
+    dataRed = reduce(data,redSize)
+    dataMat = data.as_matrix()
+    arRed = []
+    arData = []
+    
+    for i in r:
+        arRed.append(dataRed[i])
+        arData.append(dataMat[i])
+
+    arRed = np.asarray(arRed)
+    arData = np.asarray(arData)
+   
+    dist = []
+    dist = distortion(alldist(arRed), alldist(arData))
+
+    np.set_printoptions(precision=2)
+    print((arData.nbytes / arRed.nbytes),round(dist.min(), 2),round(dist.mean(),2),round(dist.max(),2))
+    plt.hist(np.ravel(dist), normed = True, bins = 100, histtype='step')
 
