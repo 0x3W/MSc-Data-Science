@@ -83,3 +83,67 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES;
 
 SELECT * FROM test1.Comments;
+
+-- Create Table Badges, works for now
+CREATE TABLE Badges (
+ Id INT, 
+ UserId INT, 
+ Name VARCHAR(40), 
+ Date DATETIME, 
+ Class TINYINT, 
+ TagBased BIT,
+ PRIMARY KEY  (Id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOAD DATA LOCAL INFILE '/Users/Dovla/Downloads/Badges.csv' INTO TABLE Badges
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT * FROM test1.Badges;
+
+-- Create Table PostTags, works for now
+CREATE TABLE PostTags (
+ PostId INT,
+ TagId INT,
+  PRIMARY KEY (PostId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOAD DATA LOCAL INFILE '/Users/Dovla/Downloads/PostTags.csv' INTO TABLE PostTags
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT * FROM test1.PostTags;
+
+-- Create Table PostTypes, works for now
+CREATE TABLE PostTypes (
+  Id TINYINT UNSIGNED NOT NULL,
+  PostName VARCHAR(50) NOT NULL,
+  PRIMARY KEY  (Id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOAD DATA LOCAL INFILE '/Users/Dovla/Downloads/PostTypes.csv' INTO TABLE PostTypes
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT * FROM test1.PostTypes;
+
+-- Create Table Tags, works for now
+CREATE TABLE Tags (
+ Id INT,
+ TagName VARCHAR(30),
+ Count INT,
+ ExcerptPostId INT,
+ WikiPostId INT,
+ PRIMARY KEY (Id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOAD DATA LOCAL INFILE '/Users/Dovla/Downloads/Tags.csv' INTO TABLE Tags
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT * FROM test1.Tags;
+
