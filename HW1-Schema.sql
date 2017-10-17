@@ -36,3 +36,50 @@ IGNORE 1 LINES;
 
 SELECT * FROM test1.Posts;
 -- DROP TABLE test1.Posts;
+
+
+-- Create table Users, works for now
+CREATE TABLE Users (
+Id INT,
+Reputation INT,
+CreationDate DATETIME,
+DisplayName VARCHAR(40),
+LastAccessDate DATETIME, 
+WebsiteUrl VARCHAR(200),
+Location VARCHAR(100),
+AboutMe LONGTEXT,
+Views INT,
+UpVotes INT,
+DownVotes INT,
+ProfileImageUrl VARCHAR(200),
+EmailHash VARCHAR(32),
+Age INT,
+AccountId INT,
+PRIMARY KEY (Id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOAD DATA LOCAL INFILE '/Users/Dovla/Downloads/Users.csv' INTO TABLE Users
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT * FROM Users;
+
+-- Create Table Comments, works for now
+CREATE TABLE Comments (
+ Id INT,
+ PostId INT,
+ Score INT,
+ Text1 VARCHAR(600),
+ CreationDate DATETIME,
+ UserDisplayName VARCHAR(30),
+ UserId INT,
+ PRIMARY KEY  (Id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOAD DATA LOCAL INFILE '/Users/Dovla/Downloads/Comments.csv' INTO TABLE Comments
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT * FROM test1.Comments;
