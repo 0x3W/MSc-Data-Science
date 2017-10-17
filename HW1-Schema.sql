@@ -147,3 +147,44 @@ IGNORE 1 LINES;
 
 SELECT * FROM test1.Tags;
 
+
+-- Create Table Votes, works for now
+CREATE TABLE Votes (
+ Id INT, 
+ PostId INT, 
+ VoteTypeId TINYINT, 
+ UserId INT,  
+ CreationDate DATETIME, 
+ BountyAmount INT,
+ PRIMARY KEY  (Id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOAD DATA LOCAL INFILE '/Users/Dovla/Downloads/Votes.csv' INTO TABLE Votes
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT * FROM test1.Votes;
+
+-- Create Table SuggestedEdits, works for now
+CREATE TABLE SuggestedEdits (
+ Id INT, 
+ PostId INT, 
+ CreationDate DATETIME, 
+ ApprovalDate DATETIME,  
+ RejectionDate DATETIME, 
+ OwnerUserId INT, 
+ Comment VARCHAR(800), 
+ Text VARCHAR(800), 
+ Title VARCHAR(250), 
+ Tags VARCHAR(250), 
+ RevisionGUID CHAR(50) NOT NULL,
+ PRIMARY KEY  (Id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOAD DATA LOCAL INFILE '/Users/Dovla/Downloads/SuggestedEdits.csv' INTO TABLE SuggestedEdits
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT * FROM test1.SuggestedEdits;
