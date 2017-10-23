@@ -62,5 +62,28 @@ def avgDCMG(ground, stemmer, k, maxQueries):
     return rslt0
 
 
+avgCDefStem = avgDCMG(groundTruth, cDefStem, k, maxQueries)
+avgBDefStem = avgDCMG(groundTruth, bDefStem, k, maxQueries)
+avgTDefStem = avgDCMG(groundTruth, tDefStem, k, maxQueries)
+
+avgCEngStem = avgDCMG(groundTruth, cEngStem, k, maxQueries)
+avgBEngStem = avgDCMG(groundTruth, bEngStem, k, maxQueries)
+avgTEngStem = avgDCMG(groundTruth, tEngStem, k, maxQueries)
+
+avgCEngStemStop = avgDCMG(groundTruth, cEngStemStop, k, maxQueries)
+avgBEngStemStop = avgDCMG(groundTruth, bEngStemStop, k, maxQueries)
+avgTEngStemStop = avgDCMG(groundTruth, tEngStemStop, k, maxQueries)
+
+zipEm = pd.DataFrame(list(map(list, zip(avgCDefStem,avgBDefStem,avgTDefStem, avgCEngStem,avgBEngStem, avgTEngStem, avgCEngStemStop, avgBEngStemStop, avgTEngStemStop))))
+avgs = zipEm.transpose()
+print(avgs)
+
+import matplotlib.pyplot as plt
+
+plt.plot(k, avgs.loc[0], color='blue')
+plt.plot(k, avgs.loc[1], color='lightblue')
+plt.plot(k, avgs.loc[2], color='darkblue')
+
+
 
     
