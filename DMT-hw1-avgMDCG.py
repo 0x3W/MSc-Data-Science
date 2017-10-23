@@ -83,6 +83,33 @@ import matplotlib.pyplot as plt
 plt.plot(k, avgs.loc[0], color='blue')
 plt.plot(k, avgs.loc[1], color='lightblue')
 plt.plot(k, avgs.loc[2], color='darkblue')
+plt.plot(k, avgs.loc[3], color='green')
+plt.plot(k, avgs.loc[4], color='lightgreen')
+plt.plot(k, avgs.loc[5], color='darkgreen')
+
+plt.plot(k, avgs.loc[6], color='red')
+plt.plot(k, avgs.loc[7], color='coral')
+plt.plot(k, avgs.loc[8], color='crimson')
+
+plt.legend(['y=avgCDefStem', 'y=avgBDefStem', 'y=avgTDefStem', 'y=avgCEngStem', 'y=avgBEngStem', 'y=avgTEngStem', 'y=avgCEngStemStop', 'y=avgBEngStemStop', 'y=avgTEngStemStop'], loc='best')
+
+plt.xlabel('K = [1,3,5,10]')
+plt.ylabel('Avg values')
+plt.title('Avg nDCMG values')
+
+
+#kl = [1,3,5,10]
+#for tp in kl:
+#    if tp == 1:
+#        print(tp)
+
+#1
+#1 + 1/math.log2(2) + 1/math.log2(3)
+#2.6309297535714578
+#1 + 1/math.log2(2) + 1/math.log2(3) + 1/math.log2(4) + 1/math.log2(5)
+#3.5616063116448506
+#1 + 1/math.log2(2) + 1/math.log2(3) + 1/math.log2(4) + 1/math.log2(5) + 1/math.log2(6) + 1/math.log2(7) + 1/math.log2(8) + 1/math.log(9)
+#5.093119252634166
 
 
 
