@@ -25,3 +25,26 @@ aggTextTitle = pd.read_csv('aggTextTitle.tsv', sep='\t')
 
 maxQueries = 225 # final.Query_ID.max() 
 
+def avgR(groundTruth, maxQueries, currentDF):
+    rslt = []
+    for i in range(maxQueries):
+        temp10 = groundTruth.loc[groundTruth['Query_id'] == i+1]
+        temp11 = currentDF.loc[currentDF['Query_ID'] == i+1]
+        temp12 = temp10['Relevant_Doc_id'].isin(temp11['Doc_ID'])
+        if temp12.empty:
+            res = 0
+            rslt.append(res)
+        else:
+            res = sum(temp12) / len(temp10)
+            rslt.append(res)
+    return sum(rslt)/len(rslt)
+
+
+avgCDefStem = avgR(groundTruth, maxQueries, cDefStem)
+avgBDefStem = avgR(groundTruth, maxQueries, bDefStem)
+avgTDefStem = avgR(groundTruth, maxQueries, tDefStem)
+
+avgCEngStem = avgR(groundTruth, maxQueries, cEngStem)
+avgBEngStem = avgR(groundTruth, maxQueries, bEngStem)
+avgTEngStem = avgR(groundTruth, maxQueries, tEngStem)
+
