@@ -47,4 +47,10 @@ avgTDefStem = avgR(groundTruth, maxQueries, tDefStem)
 avgCEngStem = avgR(groundTruth, maxQueries, cEngStem)
 avgBEngStem = avgR(groundTruth, maxQueries, bEngStem)
 avgTEngStem = avgR(groundTruth, maxQueries, tEngStem)
+avgCEngStemStop = avgR(groundTruth, maxQueries, cEngStemStop)
+avgBEngStemStop = avgR(groundTruth, maxQueries, bEngStemStop)
+avgTEngStemStop = avgR(groundTruth, maxQueries, tEngStemStop)
 
+avgAggTextTitle = avgR(groundTruth, maxQueries, aggTextTitle)
+
+rPrecision = [avgCDefStem,avgBDefStem,avgTDefStem, avgCEngStem,avgBEngStem, avgTEngStem, avgCEngStemStop, avgBEngStemStop, avgTEngStemStop, avgAggTextTitle]
