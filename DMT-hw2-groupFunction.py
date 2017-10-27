@@ -48,4 +48,16 @@ print ("Current time: " + str(time.asctime(time.localtime())))
 print
 print
 
+### Conversion of the 'Item-Item-Graph' to a scipy sparse matrix representation.
+### This reduces a lot the PageRank running time ;)
+print
+print (" Conversion of the 'Item-Item-Graph' to a scipy sparse matrix representation.")
+N = len(item_item_graph)
+nodelist = item_item_graph.nodes()
+M = nx.to_scipy_sparse_matrix(item_item_graph, nodelist=nodelist, weight='weight', dtype=float)
+print (" Done.")
+print
+#################################################################################################
+
+
 
