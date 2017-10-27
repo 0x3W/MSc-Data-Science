@@ -58,6 +58,39 @@ M = nx.to_scipy_sparse_matrix(item_item_graph, nodelist=nodelist, weight='weight
 print (" Done.")
 print
 #################################################################################################
+output_file = open("./Output_Recommendation_for_Group.tsv", 'w')
+output_file_csv_writer = csv.writer(output_file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_NONE)
+print
+for current_group in all_groups:
+    print ("Current group: ")
+    pp.pprint(current_group)
+    print ("Current time: " + str(time.asctime(time.localtime())))
+    	
+    sorted_list_of_recommended_items_for_current_group = []
+	# Your code here ;)
+    listItems = {}
+    for current_user1, currentBias in current_group.items():
+        print(current_user1,currentBias)
+        preference_vector = homework_2.create_preference_vector_for_teleporting(current_user1, graph_users_items)
+        personalized_pagerank_vector_of_items = homework_2.pagerank(M, N, nodelist, alpha=0.85, personalization=preference_vector)
+        for k, v in personalized_pagerank_vector_of_items.items():
+            personalized_pagerank_vector_of_items[k] = v * currentBias
+        listItems.update(personalized_pagerank_vector_of_items)
+    sorted_list_of_recommended_items_for_current_group = homework_2.create_ranked_list_of_recommended_items(listItems, current_user1, graph_users_items)
+
+    print ("Recommended Sorted List of Items:")
+    print(str(sorted_list_of_recommended_items_for_current_group[:30]))
+    print
+    output_file_csv_writer.writerow(sorted_list_of_recommended_items_for_current_group)
+	
+output_file.close()	
+      
+
+print
+print
+print ("Current time: " + str(time.asctime(time.localtime())))
+print ("Done ;)")
+print
 
 
 
