@@ -152,3 +152,22 @@ def discounted_cumulative_gain(user_id, sorted_list_of_recommended_items, test_g
         dcg += my_tuple[i][1]/math.log2(i+2)
                  
     return dcg
+
+def maximum_discounted_cumulative_gain(user_id, test_graph_users_items):
+    dcg = 0
+    preference_vector = {}    
+    x = user_id
+    neighbors = sorted(test_graph_users_items['graph'].neighbors(x))
+    for j in test_graph_users_items['items']:
+        if j in neighbors:
+            weight = test_graph_users_items['graph'][x][j]['weight']
+            preference_vector[j] = weight
+        else:
+            preference_vector[j] = 0.0
+    tuples = list(preference_vector.items())
+    
+    max_value = sorted(tuples,key=lambda x: x[1], reverse=True)[0][1]
+    for i in range(1,len(tuples)):
+        dcg += max_value/math.log2(i+2)
+                 
+    return dcg
