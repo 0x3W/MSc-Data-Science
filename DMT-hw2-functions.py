@@ -69,3 +69,37 @@ def pagerank(M, N, nodelist, alpha=0.85, personalization=None, max_iter=100, tol
 	print ('Error: power iteration failed to converge in '+str(max_iter)+' iterations.')
 	print
 	exit(-1)
+def create_graph_set_of_users_set_of_items(user_item_ranking_file):
+	graph_users_items = {}
+	all_users_id = set()
+	all_items_id = set()
+	g = nx.DiGraph()
+	input_file = open(user_item_ranking_file, 'r')
+	input_file_csv_reader = csv.reader(input_file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_NONE)
+	for line in input_file_csv_reader:
+		user_id = int(line[0])
+		item_id = int(line[1])
+		rating = int(line[2])
+		g.add_edge(user_id, item_id, weight=rating)
+		all_users_id.add(user_id)
+		all_items_id.add(item_id)
+	input_file.close()
+	graph_users_items['graph'] = g
+	graph_users_items['users'] = all_users_id
+	graph_users_items['items'] = all_items_id
+	return graph_users_items
+
+def create_item_item_graph(graph_users_items):
+    g = nx.Graph()
+    for x in list(graph_users_items['items'])[:-1]:
+        for y in list(graph_users_items['items'])[1:]:
+            set1 = set(graph_users_items['graph'].predecessors(x))
+            set2 = set(graph_users_items['graph'].predecessors(y))
+            intersection = set1.intersection(set2)
+            rating = len(intersection)
+            if rating > 0:
+                g.add_edge(x, y, weight=rating)
+    return g
+
+#g = create_item_item_graph(training_graph_users_items)
+
