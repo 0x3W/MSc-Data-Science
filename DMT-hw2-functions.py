@@ -103,3 +103,42 @@ def create_item_item_graph(graph_users_items):
 
 #g = create_item_item_graph(training_graph_users_items)
 
+def create_preference_vector_for_teleporting(user_id, graph_users_items):
+    preference_vector = {}    
+    x = user_id
+    weights = 0.0
+    neighbors = sorted(graph_users_items['graph'].neighbors(x))
+    for j in graph_users_items['items']:
+        if j in neighbors:
+            weights += graph_users_items['graph'][x][j]['weight']
+    for j in graph_users_items['items']:
+        if j in neighbors:
+            weight = graph_users_items['graph'][x][j]['weight']
+            preference_vector[j] = weight/weights
+        else:
+            preference_vector[j] = 0.0
+    return preference_vector
+
+def create_ranked_list_of_recommended_items(page_rank_vector_of_items, user_id, training_graph_users_items):
+    # This is a list of 'item_id' sorted in descending order of score.
+    sorted_list_of_recommended_items = []
+
+    # You can obtain this list from a list of [item, score] couples sorted in descending order of score.
+
+    sorted_list_of_recommended_items = sorted(page_rank_vector_of_items.items(), key = lambda x: x[1], reverse = True)
+    	
+    return [int(i[0]) for i in sorted_list_of_recommended_items]
+    
+def discounted_cumulative_gain(user_id, sorted_list_of_recommended_items, test_graph_users_items):
+    dcg = 0.0
+    preference_vector = {}    
+    x = user_id
+    neighbors = sorted(test_graph_users_items['graph'].neighbors(x))
+    for j in test_graph_users_items['items']:
+        if j in neighbors:
+            weight = test_graph_users_items['graph'][x][j]['weight']
+            preference_vector[j] = weight
+        else:
+            preference_vector[j] = 0.0
+    tuples = list(preference_vector.items())
+    
