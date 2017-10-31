@@ -142,3 +142,13 @@ def discounted_cumulative_gain(user_id, sorted_list_of_recommended_items, test_g
             preference_vector[j] = 0.0
     tuples = list(preference_vector.items())
     
+    my_tuple = list()
+    for i in sorted_list_of_recommended_items:
+        for j in range(len(tuples)):
+            if i == tuples[j][0]:
+                my_tuple.append(tuples[j])
+    dcg += my_tuple[0][1]
+    for i in range(1,len(my_tuple)):
+        dcg += my_tuple[i][1]/math.log2(i+2)
+                 
+    return dcg
