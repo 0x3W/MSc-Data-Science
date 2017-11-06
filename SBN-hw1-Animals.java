@@ -75,3 +75,36 @@ import static org.apache.lucene.util.Version.LUCENE_41;
         IndexWriter writer = new IndexWriter(dir, cfg);
         
 
+        LongField field1 = new LongField("field1", 0L, Field.Store.YES);
+        IntField field2 = new IntField("field2", (int) 0L, Field.Store.YES);
+        StringField field3 = new StringField("field3", "A", Field.Store.YES);
+        StringField field4 = new StringField("field4", "Ba. Ae.", Field.Store.YES);
+        Document doc = new Document();
+        doc.add(field1);
+        doc.add(field2);
+        doc.add(field3);
+        doc.add(field4);
+        
+        for(int i = 0; i < 14; i++) {
+            field1.setLongValue(i);
+            field2.setIntValue(anims[i].age);
+            field3.setStringValue(anims[i].name);
+            field4.setStringValue(anims[i].desc);
+            writer.addDocument(doc);
+        }
+        writer.commit();
+        writer.close();
+        
+        IndexReader ir= DirectoryReader.open(dir);
+        IndexSearcher searcher = new IndexSearcher(ir);
+   
+        // <default field> is the field that QueryParser will search if you don't 
+        // prefix it with a field.
+        //string special = "bodytext:" + text + " OR title:" + text;
+
+        //Hits hits = searcher.Search(queryParser.parse(special));
+
+        Query q = new TermQuery( new Term("field3","Elephants"));
+        TopDocs top = searcher.search(q, 10); // perform a query and limit results number
+        ScoreDoc[] hits = top.scoreDocs; // get only the scored documents (ScoreDoc is a tuple)
+        //Document doc=null;
