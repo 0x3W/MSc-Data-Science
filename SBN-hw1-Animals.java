@@ -108,3 +108,12 @@ import static org.apache.lucene.util.Version.LUCENE_41;
         TopDocs top = searcher.search(q, 10); // perform a query and limit results number
         ScoreDoc[] hits = top.scoreDocs; // get only the scored documents (ScoreDoc is a tuple)
         //Document doc=null;
+        for(ScoreDoc entry:hits){
+            Document doc1 = searcher.doc(entry.doc); /* the same as ir.document(entry.doc); */
+            System.out.println("field3: "+doc1.get("field3"));
+            //System.out.println("field2: "+doc1.get("field2"));
+            //System.out.println("field3: "+doc1.get("field3"));
+            //System.out.println("field4: "+doc1.get("field4"));
+        }
+    }
+}
