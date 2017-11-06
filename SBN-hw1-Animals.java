@@ -46,3 +46,32 @@ import static org.apache.lucene.util.Version.LUCENE_41;
             this.desc = desc;
 
         }
+        public static void main(String[] args) throws IOException {
+                
+        Animal[] anims;
+        anims = new Animal[14];
+
+        anims[0] = new Herbivores(1,"Elephants","A");
+        anims[1] = new Herbivores(2,"Rabbits","B");
+        anims[2] = new Herbivores(3,"Manatees","C");
+        anims[3] = new Herbivores(4,"Deer","D");
+        
+        anims[4] = new Omnivores(5,"Humans","E");
+        anims[5] = new Omnivores(6,"Bears","F");
+        anims[6] = new Omnivores(7,"Lemurs","G");
+        anims[7] = new Omnivores(8,"Raccoons","H");
+        anims[8] = new Omnivores(9,"Birds","I");                
+        
+        anims[9] = new Carnivores(10,"Lions","K");
+        anims[10] = new Carnivores(11,"Crocodiles","L");
+        anims[11] = new Carnivores(12,"Sharks","M");
+        anims[12] = new Carnivores(13,"Otters","N");
+        anims[13] = new Carnivores(14,"Weasels","O");
+        
+        Directory dir= new RAMDirectory();
+        Analyzer analyzer = new StandardAnalyzer(LUCENE_41);
+
+        IndexWriterConfig cfg= new IndexWriterConfig(LUCENE_41,analyzer);
+        IndexWriter writer = new IndexWriter(dir, cfg);
+        
+
