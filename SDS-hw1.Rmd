@@ -158,3 +158,25 @@ cat("Therefore probability that X wins is :", (x1/1000))
 cat("while probability that O wins is :", (o1/1000))
 ```
 
+## Question 3
+
+Monty Hall works because we initially assign .66 probability to doors that we dont pick, upon switching (opening one of the doors) the probability of .66 remains (on paper) on the remaining one door, hence we should always switch. Which is also confirmed through simulation below.
+
+Therefore it doesnt matter what we initially choose, we should switch in the long run although we loose when we pick door with car which is 0.33.
+
+```{r}
+doors <- c("A","B","C")
+decision <- c()
+for (i in 1:1000) 
+{
+  prize <- sample(doors)[1]
+  pick <- sample(doors)[1]
+  open <- sample(doors[which(doors != prize & doors != pick)])[1]
+  switch <- doors[which(doors != pick & doors != open)]
+  if(pick == prize){decision=c(decision,"NoSwitch")}
+  if(switch == prize){decision=c(decision,"Switch")}
+}
+cat("Switching was appropriate strategy in :", (length(which(decision == "NoSwitch"))/1000), "of times")
+cat("Switching was appropriate strategy in :", (length(which(decision == "Switch"))/1000), "of times")
+```
+
