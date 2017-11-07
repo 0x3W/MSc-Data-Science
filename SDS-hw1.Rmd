@@ -180,3 +180,73 @@ cat("Switching was appropriate strategy in :", (length(which(decision == "NoSwit
 cat("Switching was appropriate strategy in :", (length(which(decision == "Switch"))/1000), "of times")
 ```
 
+## Question 4
+### Part 1
+
+```{r Part1}
+xx <- runif(100,0,1)
+y <- array(NA, dim=c(1,100))
+for(i in 1:100) {
+  x <- xx[i]
+  if (x <= 0.5) {
+    x <- 2*x
+  }
+  else {
+    x <- 2*(1-x)
+  }
+  y[i] <- x
+}
+
+x <- xx
+par(mfrow=c(2,3))
+plot(seq(1:100),x, type = 'l',col="Green", xlab="n", ylab="value", main="Values of Uniform")
+hist(x, breaks=10, col="blue", main="Hist of Uniform")
+curve(dunif(x),add=T, col="red", lwd=1)
+plot(density(x),main="Density of Uniform")
+
+remove(x)
+x <- y
+plot(seq(1:100),x, type = 'l', col="Green", xlab="n", ylab="value", main="Values of Transform")
+hist(x, breaks=10, col="blue", main="Hist of Transform")
+curve(dunif(x),add=T, col="red", lwd=1)
+plot(density(x), main="Density of Transform")
+```
+
+### Part 2
+Generate 1 uniform point and generate 99 consective transforms.
+
+The properties are that transformations hit zero upon reaching value of 0.5.
+
+```{r Part2, echo=FALSE}
+remove(x,xx,y)
+
+xx <- runif(1,0,1)
+y <- array(NA, dim=c(1,100))
+y[1] <- xx
+for(i in 2:100) {
+    x <- y[i-1]
+  if (x <= 0.5) {
+    x <- 2*x
+  }
+  else {
+    x <- 2*(1-x)
+  }
+  y[i] <- x
+}
+
+par(mfrow=c(1,3))
+x <- y
+plot(seq(1:100),x, type = 'l', col="Green", xlab="n", ylab="value", main="Values of Transform")
+hist(x, breaks=10, col="blue", main="Hist of Transform")
+curve(dunif(x),add=T, col="red", lwd=1)
+plot(density(x), main="Density of Transform")
+
+```
+
+### Part 3
+
+The resulting sequence has desirible behavior considering that most of values are edge cases.
+
+```{r Part3, echo=FALSE}
+remove(x,xx,y)
+
