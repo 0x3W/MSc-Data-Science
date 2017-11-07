@@ -1,0 +1,27 @@
+---
+title: "SDS HW1"
+author: "Vlado Vukovic"
+date: "11/5/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1
+My assumptions are that Rome has population of 1,486,981 people, and one phone number is available per 4 people (avg family) + one phone number per 1,000 people for other stuff like businesses or government. 
+
+Line busyness is a normal random variable with mean 0.2 and sd 0.1.
+
+```{r}
+pop = 1486981
+totalNumbers = pop / 4 +  pop /1000 
+probBusy = rnorm(1,0.2,0.1)
+prior = 1 / totalNumbers
+post = 1 / (totalNumbers*probBusy)
+cat("My belief was", prior, "\n")
+cat("My belief after dialing is", post, "\n")
+cat("Therefore my belief increased by", post/prior, "times")
+```
+
