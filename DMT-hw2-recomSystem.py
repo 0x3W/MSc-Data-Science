@@ -108,5 +108,9 @@ print
 print ("  average_normalized_DCG_for_PERSONAL_recommendation_over_all_training_set_test_set_couples = " + str(1-average_normalized_DCG_for_PERSONAL_recommendation_over_all_training_set_test_set_couples))
 print
 
-	
-    	
+print
+print
+print ("Current time: " + str(time.asctime(time.localtime())))
+print
+print ("Done ;)")
+print
