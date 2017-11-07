@@ -77,5 +77,36 @@ for index in range(1, number_of_training_set_test_set_instances + 1):
     sum_of_normalizedDCG_for_PERSONAL_recommendation = 0.
     
 
-    	
+        print
+    print ("Start Personal Recommandation for each user in the Test Set.")
+    print ("Current time: " + str(time.asctime(time.localtime())))
+    	### Run recommandation for each user in the TEST set.
+    for current_user_id in test_graph_users_items['users']:
+		
+		# Personal recommendation for the current user using PersonalizedPageRank
+        preference_vector = homework_2.create_preference_vector_for_teleporting(current_user_id, training_graph_users_items)
+        personalized_pagerank_vector_of_items = homework_2.pagerank(M, N, nodelist, alpha=0.85, personalization=preference_vector)
+        sorted_list_of_recommended_items_form_PERSONAL_recommendation = homework_2.create_ranked_list_of_recommended_items(personalized_pagerank_vector_of_items, current_user_id, training_graph_users_items)
+        #print(sorted_list_of_recommended_items_form_PERSONAL_recommendation)
+        current_dcg_for_PERSONAL_recommendation = homework_2.discounted_cumulative_gain(current_user_id, sorted_list_of_recommended_items_form_PERSONAL_recommendation, test_graph_users_items)    		
+        		# Maximum Discounted Cumulative Gain.
+        current_MAXIMUM_dcg = homework_2.maximum_discounted_cumulative_gain(current_user_id, test_graph_users_items)
+        		    		
+        sum_of_normalizedDCG_for_PERSONAL_recommendation += current_dcg_for_PERSONAL_recommendation/float(current_MAXIMUM_dcg)
+        	
+        #print ("Current time: " + str(time.asctime(time.localtime())))
+        #print ("Done.")
+            	
+        avg_normalized_DCG_for_PERSONAL_recommendation = sum_of_normalizedDCG_for_PERSONAL_recommendation / float(len(test_graph_users_items['users']))
+	
+    sum_of_AVEARGE_normalized_DCG_for_PERSONAL_recommendation += avg_normalized_DCG_for_PERSONAL_recommendation
+	
+average_normalized_DCG_for_PERSONAL_recommendation_over_all_training_set_test_set_couples = sum_of_AVEARGE_normalized_DCG_for_PERSONAL_recommendation/number_of_training_set_test_set_instances
+
+print
+print
+print ("  average_normalized_DCG_for_PERSONAL_recommendation_over_all_training_set_test_set_couples = " + str(1-average_normalized_DCG_for_PERSONAL_recommendation_over_all_training_set_test_set_couples))
+print
+
+	
     	
