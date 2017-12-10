@@ -3,16 +3,15 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 ### Semester I - Fall 2016
 
-#### [Fundamentals of Data Science](http://datascience.i3s.uniroma1.it/it/node/5742)
-  - Homeworks
-    1. Prime Number
-    3. Gradient Descent
-    4. Words Count
-    5. Books Clustering
-    6. Logistic Regression / Binary classification 
-    7. Dimensionality Reduction
-  - [Final Project] (https://github.com/Affliction123/Data-Science-Masters/blob/master/FDS-Final%20Project.py) based on [Kaggle Exercise on House Prices] (https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
-  - Lab
+#### [Fundamentals of Data Science](http://datascience.i3s.uniroma1.it/it/node/5742) - Labs
+   1. [Prime Number](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW1-PrimeNumber.py)
+   3. [Gradient Descent](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW3-GDrun.py) | [lib](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW3-GDlib.py)
+   4. [Words Count](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW4-run.py) | [lib](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW4-lib.py)
+   5. [Books Clustering](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW5-run.py)  | [lib](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW5-lib.py)
+   6. [Logistic Regression](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW6-run.py)
+   7. [Dimensionality Reduction](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW7-run.py) | [lib](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW7-run.py)
+    
+[**Final Project**](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/Kaggle.py) based on [Kaggle Exercise on House Prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
   
 #### [Algorithmic Methods of Data Mining and Laboratory](http://datascience.i3s.uniroma1.it/it/node/5597)
   - Homeworks
