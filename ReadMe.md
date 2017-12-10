@@ -10,8 +10,7 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
    5. [Books Clustering](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW5-run.py)  | [lib](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW5-lib.py)
    6. [Logistic Regression](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW6-run.py)
    7. [Dimensionality Reduction](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW7-run.py) | [lib](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/HW7-run.py)
-    
-[**Final Project**](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/Kaggle.py) based on [Kaggle Exercise on House Prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+   8. [**Final Project**](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/Kaggle.py) based on [Kaggle Exercise on House Prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
   
 #### [Algorithmic Methods of Data Mining and Laboratory](http://datascience.i3s.uniroma1.it/it/node/5597)
   - Homeworks
