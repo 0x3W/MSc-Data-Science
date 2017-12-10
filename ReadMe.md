@@ -5,11 +5,10 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 #### [Fundamentals of Data Science](http://datascience.i3s.uniroma1.it/it/node/5742)
   - Homeworks
-    1. NumPy & Pandas
-    2. Prime Numbers
-    3. Linear Regression
-    4. Books Clustering I
-    5. Books Clustering II
+    1. Prime Number
+    3. Gradient Descent
+    4. Words Count
+    5. Books Clustering
     6. Logistic Regression / Binary classification 
     7. Dimensionality Reduction
   - [Final Project] (https://github.com/Affliction123/Data-Science-Masters/blob/master/FDS-Final%20Project.py) based on [Kaggle Exercise on House Prices] (https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
