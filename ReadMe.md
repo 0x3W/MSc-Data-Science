@@ -42,10 +42,10 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 ### Semester III - Fall 2017
 
-Data Privacy and Security
+[Data Privacy and Security](http://datascience.i3s.uniroma1.it/it/node/5741)
 
-Social and behvioral networks
+[BioInformatics](http://datascience.i3s.uniroma1.it/it/node/5743)
 
-BioInformatics
+[Digital Epidemiology](http://datascience.i3s.uniroma1.it/it/node/5710)
 
-Big Data for Smart Cities
+[Statistical Methods for Official Statistics](http://datascience.i3s.uniroma1.it/it/node/5747)
