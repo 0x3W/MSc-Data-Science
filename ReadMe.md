@@ -19,9 +19,9 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
   
 #### [Statistical Methods in Data Science and Laboratory I](http://datascience.i3s.uniroma1.it/it/node/5707)
   - Homeworks
-    1. Monty Python [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW1.Rmd)[.html](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW1.html)
-    2. PowerLaw [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW2.Rmd)[.html](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW2.html)
-    3. Stocks Return [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW3.Rmd)[.html](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW3.html)
+    1. Monty Python [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW1.Rmd) - [.html](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW1.html)
+    2. PowerLaw [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW2.Rmd) - [.html](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW2.html)
+    3. Stocks Return [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW3.Rmd) - [.html](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW3.html)
   
 #### [Intellectual Property Competition and Data Protection Law](http://datascience.i3s.uniroma1.it/it/node/5745)
 
