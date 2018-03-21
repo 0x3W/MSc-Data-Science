@@ -14,12 +14,9 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
   
 #### [Algorithmic Methods of Data Mining and Laboratory](http://datascience.i3s.uniroma1.it/it/node/5597)
   - Homeworks
-  1.
-  2.
-  3. Online and Offline Recomendation Engine
-  - Final Project
-  
-  - Lab
+  1. HackerRank
+  2. BBC Food scrape and build recommendation [engine](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/HW2-main.py) | [lib](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/HW2-BBCfoodScrape)
+  3. [Online](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/CF-online.py) and [Offline](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/CF.py) Book Recomendation Engine
   
 #### [Statistical Methods in Data Science and Laboratory I](http://datascience.i3s.uniroma1.it/it/node/5707)
   - Homeworks
