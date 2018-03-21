@@ -1,0 +1,303 @@
+---
+title: "SDS HW II"
+author: "Vlado Vukovic | 1772953"
+date: "12/10/2017"
+output: html_document
+---
+
+#Question 1
+```{r, include=FALSE}
+library(igraph)
+library(poweRlaw)
+library(dplyr)
+```
+
+```{r}
+# Play with igraph
+grMa <- matrix(NA, nrow = 4, ncol = 2)
+
+grMa[1,1] <- 1; grMa[2,1] <- 2; grMa[3,1] <- 3; grMa[4,1] <- 4
+grMa[1,2] <- 2; grMa[2,2] <- 3; grMa[3,2] <- 4; grMa[4,2] <- 1
+
+dfGr <- graph_from_data_frame(grMa[complete.cases(grMa),], directed = TRUE, vertices = NULL)
+plot(dfGr, vertex.size=20,edge.arrow.size=1)
+
+V(dfGr)
+adjacent_vertices(dfGr, 1, mode = c("out"))
+adjacent_vertices(dfGr, 1, mode = c("all"))
+```
+
+#Question 2
+
+```{r}
+construct <- function(){
+  graphMatrix <- matrix(NA, nrow = 100000, ncol = 2)
+  graphMatrix[1,1] <- 1; graphMatrix[2,1] <- 2; graphMatrix[3,1] <- 3; graphMatrix[4,1] <- 4
+  graphMatrix[1,2] <- 2; graphMatrix[2,2] <- 3; graphMatrix[3,2] <- 4; graphMatrix[4,2] <- 1
+  
+  for (i in 5:100000){
+    graphMatrix[i,1] <- i 
+    if (rbinom(1,1,0.5) > 0) {
+      graphMatrix[i,2] <- sample(1:i,1)
+    } else {
+      graphMatrix[i,2] <- sample(graphMatrix[1:i,2],1)
+    }
+  }
+  return(graphMatrix)
+}
+
+transform <- function(graphMatrix){
+  colnames(graphMatrix) <- c("V1", "V2")
+  graphMatrixTemp1 <- data.frame(graphMatrix) %>% group_by(V2) %>% mutate(count = n())
+  graphMatrixTemp2 <- graphMatrixTemp1[,2:3]
+  graphMatrixTemp3 <- graphMatrixTemp2[!duplicated(graphMatrixTemp2),]
+  graphMatrixTemp4 <- merge(graphMatrixTemp1, graphMatrixTemp2, by.x = "V1", by.y="V2",all.x=TRUE)
+  graphMatrixTemp4[is.na(graphMatrixTemp4$count.y),4] <- 0
+  return(graphMatrixTemp4)
+}
+
+fitPLd <- function(graphMatrix){
+  graphMatrix[graphMatrix == 0] <- 1
+  m_pl = displ$new(graphMatrix$count.y) #fit power law
+  est = estimate_xmin(m_pl)
+  m_pl$setXmin(est)
+  estimate_xmin(m_pl, pars=seq(2, 2.5, 0.1))
+  return(m_pl)
+
+}
+
+fitPois <- function(graphMatrix){
+  graphMatrix[graphMatrix == 0] <- 1
+  m_pois = dispois$new(graphMatrix$count.y) #fit poisson
+  est = estimate_xmin(m_pois)
+  m_pois$setXmin(est)
+  estimate_xmin(m_pois, pars=seq(2, 2.5, 0.1))
+  return(m_pois)
+}
+
+graph1 <- construct()
+graph1Trans <- transform(graph1)
+graph1FitPL  <- fitPLd(graph1Trans)
+graph1FitPois <- fitPois(graph1Trans)
+
+graph2 <- construct()
+graph2Trans <- transform(graph2)
+graph2FitPL  <- fitPLd(graph2Trans)
+graph2FitPois <- fitPois(graph2Trans)
+
+graph3 <- construct()
+graph3Trans <- transform(graph3)
+graph3FitPL  <- fitPLd(graph3Trans)
+graph3FitPois <- fitPois(graph3Trans)
+
+
+par(mfrow=c(1,3))
+plot(graph1Trans$count.y ~ graph1Trans$V1, main="Linear")
+plot(log(graph1Trans$count.y) ~ log(graph1Trans$V1), main="Log-Log")
+plot(graph1FitPL, main="Fitted Log-Log")
+lines(graph1FitPL, col="red")
+lines(graph1FitPois, col="green")
+#(plot(sort(graph1temp4$count.y) , 1-ecdf(graph1temp4$count.y)(sort(graph1temp4$count.y) ), log="xy"))
+
+par(mfrow=c(1,3))
+plot(graph2Trans$count.y ~ graph2Trans$V1, main="Linear")
+plot(log(graph2Trans$count.y) ~ log(graph2Trans$V1), main="Log-Log")
+plot(graph2FitPL, main="Fitted Log-Log")
+lines(graph2FitPL, col="red")
+lines(graph2FitPois, col="green")
+
+par(mfrow=c(1,3))
+plot(graph3Trans$count.y ~ graph3Trans$V1, main="Linear")
+plot(log(graph3Trans$count.y) ~ log(graph3Trans$V1), main="Log-Log")
+plot(graph3FitPL, main="Fitted Log-Log")
+lines(graph3FitPL, col="red")
+lines(graph3FitPois, col="green")
+
+```
+
+In line with the powerlaw fitted curve shown in third picture to the right, preferential networks follow power law distribution. However, it should be noted that due to phenomen known as Kings (which are large outliers in first ranks) the slope of the curve may start inapproprtly and the tail of the curve is "clipped" to the level of 1 therefore exhibits random network characteristics and shows appropriate fit of a poison distribution.
+
+#Question 3
+
+```{r}
+constructLarge <- function(){
+  graphMatrix <- matrix(NA, nrow = 100000, ncol = 2)
+  graphMatrix[1,1] <- 1; graphMatrix[2,1] <- 1; grMa[3,1] <- 1; grMa[4,1] <- 2
+  graphMatrix[5,1] <- 2; graphMatrix[6,1] <- 2; graphMatrix[7,1] <- 3; graphMatrix[8,1] <- 3
+  graphMatrix[9,1] <- 3; graphMatrix[10,1] <- 4; graphMatrix[11,1] <- 4; graphMatrix[12,1] <- 4
+  
+  graphMatrix[1,2] <- 2; graphMatrix[2,2] <- 3; graphMatrix[3,2] <- 4; graphMatrix[4,2] <- 1
+  graphMatrix[5,2] <- 3; graphMatrix[6,2] <- 4; graphMatrix[7,2] <- 1; graphMatrix[8,2] <- 2
+  graphMatrix[9,2] <- 4; graphMatrix[10,2] <- 1; graphMatrix[11,2] <- 2; graphMatrix[12,2] <- 3
+
+  p <- 4
+  i <- 13
+  while(i < 100000){
+    p <- p + 1
+    for (t in 1:3) {
+      graphMatrix[i,1] <- p
+      if (rbinom(1,1,0.5) > 0) {
+        graphMatrix[i,2] <- sample(seq(1:i),1)
+        i <- i + 1
+      } else {
+        graphMatrix[i,2] <- sample(graphMatrix[1:p-1,2],1)
+        i <- i + 1
+      }
+    
+    }
+  }
+  return(graphMatrix)
+}
+
+graph1large <- constructLarge()
+graph1largeTrans <- transform(graph1large)
+graph1largeFitPL  <- fitPLd(graph1largeTrans)
+graph1largeFitPois <- fitPois(graph1largeTrans)
+
+graph2large <- constructLarge()
+graph2largeTrans <- transform(graph2large)
+graph2largeFitPL  <- fitPLd(graph2largeTrans)
+graph2largeFitPois <- fitPois(graph2largeTrans)
+
+graph3large <- constructLarge()
+graph3largeTrans <- transform(graph2large)
+graph3largeFitPL  <- fitPLd(graph2largeTrans)
+graph3largeFitPois <- fitPois(graph2largeTrans)
+
+
+par(mfrow=c(1,3))
+plot(graph1largeTrans$count.y ~ graph1largeTrans$V1, main="Linear")
+plot(log(graph1largeTrans$count.y) ~ log(graph1largeTrans$V1), main="Log-Log")
+plot(graph1largeFitPL, main="Fitted Log-Log")
+lines(graph1largeFitPL, col="red")
+lines(graph1largeFitPois, col="green")
+
+par(mfrow=c(1,3))
+plot(graph2largeTrans$count.y ~ graph2largeTrans$V1, main="Linear")
+plot(log(graph2largeTrans$count.y) ~ log(graph2largeTrans$V1), main="Log-Log")
+plot(graph2largeFitPL, main="Fitted Log-Log")
+lines(graph2largeFitPL, col="red")
+lines(graph2largeFitPois, col="green")
+
+par(mfrow=c(1,3))
+plot(graph3largeTrans$count.y ~ graph3largeTrans$V1, main="Linear")
+plot(log(graph3largeTrans$count.y) ~ log(graph3largeTrans$V1), main="Log-Log")
+plot(graph3largeFitPL, main="Fitted Log-Log")
+lines(graph3largeFitPL, col="red")
+lines(graph3largeFitPois, col="green")
+
+```
+
+In line with the powerlaw fitted curve shown in third picture to the right, preferential networks follow power law distribution. However, it should be noted that due to phenomen known as Kings (which are large outliers in first ranks) the slope of the curve may start inapproprtly and the tail of the curve is "clipped" to the level of 1 therefore exhibits random network characteristics and shows appropriate fit of a poison distribution in some cases.
+
+
+# Question 4 - Essay
+### Power Law
+Power Law describes relationship between two variables as the relative change in one results in a proportional relative change in the other. It is a common occurring law throughout natural sciences. One example may be, if the length of a side is squared, the area of the object will quadruple. A power law function is the following 
+
+$$f(x) = \alpha x^k$$
+the main property of power laws is scale invariance based on whichee
+$$f(cx)=\alpha(ck)^k=c^kf(x)∝f(x)$$
+and applying log which conveniently plots on log-log e as a straight line we obtain
+$$log(f(x))=log(c)+k×log(x)$$
+```{r}
+f = function (x,a,k) {return (a*x^k)}
+xs = seq(0.1,10,length=100)
+fxs = f(xs,2.1,-.3); gxs = f(xs,2.1,.3)
+
+par(mfrow=c(2,2))
+plot(gxs,type='l',xlab='linear',ylab='a = 2.1, k = 0.3')
+plot(gxs,type='l',log='xy',xlab='log-log',ylab='a = 2.1, k = 0.3')
+plot(fxs,type='l',xlab='linear',ylab='a = 2.1, k = -0.3')
+plot(fxs,type='l',log='xy',xlab='log-log',ylab='a = 2.1, k = -0.3')
+```
+
+### Zipf Law
+Zipf Law is a discrete power law distribution thats able to approximate many physical and social science phenomenas where large events are very rare and small events are numerous. George Kingsley Zipf, after whom the law is named, is a Harvard linguistics professor who researched the words frequency occurrence in English text. He discovered astonishing relationship that the frequency of any word is inversely proportional to its rank. Which means that most frequent word will occur approximately twice as often as the next one. He was not the only one to notice this relationship though as French stenographer Jean-Baptiste Estoup and German physicist Felix Auerbach seem to have noted it as well. 
+The reason for such relationship is still unknown although the law holds across various languages and other phenomena. 
+
+Given $X∼Zipf(N,s)$ the probability mass function becomes:
+$$f(x) = \frac{\frac{1}{x^s}}{\sum_{n=1}^N(\frac{1}{n^s})}$$
+Where N is count of elements, s exponent, and x given rank.
+The pmf can be also formulated as
+$$f(x) = \frac{1}{k^s * H_{N,s}}$$
+where $H_{N,s} is the generalized harmonic number.
+
+$$H_{n,m}=\sum_{k=1}^N\frac{1}{k^m}$$
+
+### Pareto Principle
+Pareto Law or Principle also infamously known as "80/20" rule is another form of power law distribution called Pareto distribution which is continues probability distribution. It approximates phenomenas where 80% of effects come from 20% of the causes which is the case in many segments of life. It was originally discovered by Vilfredo Pareto, Italian economist in his paper "Cours d'économie politique" at University Lausanne whereby he discovered that 80% of the land in Italy is owned by 20% of the population. This discovery was based on natural occurring phenomena that 20% peapods hold 80% of peas and it holds true in many diverse cases in nature.
+
+Let random variable $X∼Pareto(α,x_m)$, its pdf is
+
+$$P(X>x)= \left\{\begin{array}{rcl}
+(\frac{x_m}{x})^\alpha & \mbox{if} & x >= x_m \\
+1 & \mbox{if} & x < x_m
+\end{array}\right.$$
+
+where $x_m>0$ is the minimum possible value of~X and $\alpha>0$. The parameter $\alpha$ is called Pareto Index when the distribution model is the distribution of wealth.
+
+This distribution asserts that x must be greater than constant $x_m$ but not too much greater where alpha controls what is “too much” .
+
+Expected Value: $$E(X)=\frac{\alpha x_m}{\alpha−1}  ,  \alpha>1$$
+if $\alpha≤ 1$, E(X) does not exist (i.e., have infinite expected value).
+
+Varianceis given as: 
+$$Var(X)=\frac{x^2_m * \alpha}{ (α−1)^2 * (α−2) } ,  α>2$$
+if $\alpha≤2$, Var(X) does not exist.
+Pareto distribution has following relation to exponential
+
+$$X∼Pareto(\alpha,x_m)⇒Y=log(\frac{X}{x_m})∼\exp(\alpha)$$
+
+which holds law precisely when $\alpha = \log_4 5 \approx 1.161$
+
+An example could be market capitalization (all shares * current price) of US stocks on NASDAQ,NYSE and AMEX stock exchanges, that seem to follow 20/80 rule.
+
+```{r}
+nasdaq <- read.csv(url("http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQ&render=download"))
+nyse <- read.csv(url("http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NYSE&render=download"))
+amex <- read.csv(url("http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=AMEX&render=download"))
+allCaps <- rbind(nasdaq, amex)
+allCaps <- rbind(allCaps, nyse)
+cap1 <- allCaps %>% select(Symbol, MarketCap) %>% arrange(desc(MarketCap)) %>% mutate(Rank = seq(1:nrow(allCaps)))
+
+#(plot(sort(cap1$MarketCap) , 1-ecdf(cap1$MarketCap)(sort(cap1$MarketCap) ), log="xy"))
+
+cap1[cap1 == 0] <- 1
+m_pl = conpl$new(cap1$MarketCap)
+est = estimate_xmin(m_pl)
+m_pl$setXmin(est)
+#estimate_xmin(m_pl, pars=seq(0.5, 3, 0.1))
+
+m_ln = conlnorm$new(cap1$MarketCap)
+est = estimate_xmin(m_ln)
+m_ln$setXmin(est)
+#estimate_xmin(m_ln, pars=seq(0.5, 3, 0.1))
+
+par(mfrow=c(1,3))
+plot(cap1$MarketCap ~ cap1$Rank)
+plot(log(cap1$MarketCap) ~ log(cap1$Rank))
+plot(m_pl)
+#(plot(sort(grMa3$count.y) , 1-ecdf(grMa3$count.y)(sort(grMa3$count.y) ), log="xy"))
+lines(m_pl, col="red")
+lines(m_ln, col="blue")
+
+```
+
+### Fitting poweRlaw
+poweRlaw is a very convinient library for fitting heavytailed distributions including discrete and continuous power law distributions. Each model is fitted using a maximum likelihood procedure and cut-off value, $x_{min}$, is estimated by minimizing Kolmogorov-Smirnoff statistic. Since Clauset et al. recommend a bootstrap procedure to get a handle on parameter uncertainty this library implements it and samples with replacement from the data set and then re-infer the parameters (algorithm). And it runs in parallel which is nice.
+
+```{r}
+library(poweRlaw)
+data(moby) # the frequency of unique words of Melville's "Moby Dick"
+head(moby, n=6)
+fit <- displ$new(moby)    # fit a discrete power-law
+est <- estimate_xmin(fit)
+fit$setXmin(est)
+fit$xmin
+fit$pars
+plot(fit)                    # plotting the word's frequencies
+lines(fit, col="red", lwd=2) # plot the fit
+```
+
+After all, all three laws are used to describe phenomena where large events are rare, but small ones numerious. Such as few large earthquakes and many small ones, few mega cities and numerous small ones, etc. And although Zipf and Pareto laws appear as separate there is a clear relationship between them as inverting the axes of Zipf law setup we obtain Pareto law as stating that "the rth largest city has n inhabitants" is equivalent to saying "n cities have population of n or more", a matter of flipping axis.
