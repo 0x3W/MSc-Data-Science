@@ -30,13 +30,13 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 [Networking for Big Data and Laboratory](http://datascience.i3s.uniroma1.it/it/node/5604)
 
 - Wireshark
-- [2nd Part]()
+- [2nd Part](https://github.com/0x3W/MSc-Data-Science/blob/master/NBD/DataCentreHW.py)
 
 [Data Mining Technology for Business and Society](http://datascience.i3s.uniroma1.it/it/node/5608)
 
-- [HW1]()
-- [HW2]()
-- [HW3]()
+- HW1 [Rprecision](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/hw1-Rprecision.py) [avgMDCG](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/hw1-avgMDCG.py) [Fagins](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/hw1-fagins.py) [Report](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/HW1-Report.pdf)
+- HW2 [Functions](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/hw2-functions.py) [GroupFunctions](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/hw2-groupFunction.py) [Recommendation](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/hw2-recomSystem.py) [Report](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/HW2-Report.pdf)
+- HW3 [pt1](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/HW3-part1.py) [pt2](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/HW3-part2.py) [Report](https://github.com/0x3W/MSc-Data-Science/blob/master/DMT/HW3-Report.pdf)
 
 [Data Management for Data Science](http://datascience.i3s.uniroma1.it/it/node/5619)
 
