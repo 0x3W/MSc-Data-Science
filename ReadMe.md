@@ -29,7 +29,14 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 [Networking for Big Data and Laboratory](http://datascience.i3s.uniroma1.it/it/node/5604)
 
+- Wireshark
+- [2nd Part]()
+
 [Data Mining Technology for Business and Society](http://datascience.i3s.uniroma1.it/it/node/5608)
+
+- [HW1]()
+- [HW2]()
+- [HW3]()
 
 [Data Management for Data Science](http://datascience.i3s.uniroma1.it/it/node/5619)
 
@@ -39,11 +46,22 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 [Data Privacy and Security](http://datascience.i3s.uniroma1.it/it/node/5741)
 
+- [Coin flip bets]() on Ethereum with Serpent
+
 [BioInformatics](http://datascience.i3s.uniroma1.it/it/node/5743)
+
+- [Protein Analysis]()
+- [Chagas Disease]()
+- [Neuro Analysis]()
 
 [Digital Epidemiology](http://datascience.i3s.uniroma1.it/it/node/5710)
 
+- []()
+- []()
+
 [Statistical Methods for Official Statistics](http://datascience.i3s.uniroma1.it/it/node/5747)
+
+- [Bayesian Analysis with ARIMA model and MCMC technique of economic data]()
 
 ### Semester IV - Spring 2018
 
