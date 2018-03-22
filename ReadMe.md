@@ -48,8 +48,11 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 ### Semester IV - Spring 2018
 
 Thesis
+
 Research at NYU
+
 [Earth Observation](http://datascience.i3s.uniroma1.it/it/node/5612)
+
 [Data Monitoring and Analysis](http://datascience.i3s.uniroma1.it/it/node/5601)
 
 
