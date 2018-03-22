@@ -42,6 +42,8 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 [Statistical Methods in Data Science and Laboratory II](http://datascience.i3s.uniroma1.it/it/node/5617)
 
+- [Bayesian Analysis with ARIMA model and MCMC technique of economic data]()
+
 ### Semester III - Fall 2017
 
 [Data Privacy and Security](http://datascience.i3s.uniroma1.it/it/node/5741)
@@ -60,8 +62,6 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 - []()
 
 [Statistical Methods for Official Statistics](http://datascience.i3s.uniroma1.it/it/node/5747)
-
-- [Bayesian Analysis with ARIMA model and MCMC technique of economic data]()
 
 ### Semester IV - Spring 2018
 
