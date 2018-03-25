@@ -21,8 +21,8 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
   - Homeworks
     1. Monty Python [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW1.Rmd) - .html
     2. PowerLaw [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW2.Rmd) - .html
-    3. Stocks Return [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW3.Rmd) - .html
-  
+    3. Stocks Return [.R](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/HW3.R) - .html
+
 #### [Intellectual Property Competition and Data Protection Law](http://datascience.i3s.uniroma1.it/it/node/5745)
 
 ### Semester II - Spring 2017
