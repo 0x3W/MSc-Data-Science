@@ -52,7 +52,7 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 [Data Privacy and Security](http://datascience.i3s.uniroma1.it/it/node/5741)
 
-- [Coin flip bets]() on Ethereum with Serpent
+- [Coin flip bets](https://github.com/0x3W/MSc-Data-Science/blob/master/DPS/FinalProjectGamble.py) on Ethereum with Serpent
 
 [BioInformatics](http://datascience.i3s.uniroma1.it/it/node/5743)
 
