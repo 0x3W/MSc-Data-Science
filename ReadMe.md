@@ -63,7 +63,7 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 [Digital Epidemiology](http://datascience.i3s.uniroma1.it/it/node/5710)
 
 - [Infections Project](https://github.com/0x3W/MSc-Data-Science/blob/master/DE/1772953-HW1.ipynb)
-- [Immunization](https://github.com/0x3W/MSc-Data-Science/blob/master/DE/1772953-HW1.html)
+- [Immunization](https://github.com/0x3W/MSc-Data-Science/blob/master/DE/1772953hw2.ipynb)
 
 [Statistical Methods for Official Statistics](http://datascience.i3s.uniroma1.it/it/node/5747)
 
