@@ -56,14 +56,14 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 [BioInformatics](http://datascience.i3s.uniroma1.it/it/node/5743)
 
-- [Protein Analysis]()
-- [Chagas Disease]()
-- [Neuro Analysis]()
+- [Protein Analysis](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW1-PPInteractions.pdf)
+- [Chagas Disease](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW2-Chagas.pdf)
+- [Neuro Analysis](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW3-Neural.pdf)
 
 [Digital Epidemiology](http://datascience.i3s.uniroma1.it/it/node/5710)
 
-- [Infections Project]()
-- [Immunization]()
+- [Infections Project](https://github.com/0x3W/MSc-Data-Science/blob/master/DE/1772953-HW1.ipynb)
+- [Immunization](https://github.com/0x3W/MSc-Data-Science/blob/master/DE/1772953-HW1.html)
 
 [Statistical Methods for Official Statistics](http://datascience.i3s.uniroma1.it/it/node/5747)
 
