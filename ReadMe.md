@@ -13,9 +13,9 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
    8. [**Final Project**](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/Kaggle.py) based on [Kaggle Exercise on House Prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
   
 #### [Algorithmic Methods of Data Mining and Laboratory](http://datascience.i3s.uniroma1.it/it/node/5597)
-  1. HackerRank
-  2. BBC Food scrape and build recommendation [engine](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/HW2-main.py) | [lib](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/HW2-BBCfoodScrape)
-  3. [Online](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/CF-online.py) and [Offline](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/CF.py) Book Recomendation Engine
+  1. HackerRank [HW-text] (http://aris.me/contents/teaching/data-mining-ds-2016/homeworks/homework1.pdf)
+  2. BBC Food scrape and build recommendation [HW-text](http://aris.me/contents/teaching/data-mining-ds-2016/homeworks/homework2.pdf) [engine](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/HW2-main.py) | [lib](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/HW2-BBCfoodScrape)
+  3. [HW-text] (http://aris.me/contents/teaching/data-mining-ds-2016/homeworks/homework3.pdf) [Online](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/CF-online.py) and [Offline](https://github.com/0x3W/MSc-Data-Science/blob/master/ADM/CF.py) Book Recomendation Engine
   
 #### [Statistical Methods in Data Science and Laboratory I](http://datascience.i3s.uniroma1.it/it/node/5707)
   - Homeworks
