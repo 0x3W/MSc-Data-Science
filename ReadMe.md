@@ -54,11 +54,13 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 
 - [Coin flip bets](https://github.com/0x3W/MSc-Data-Science/blob/master/DPS/FinalProjectGamble.py) on Ethereum with Serpent
 
+Ethereumlab: Learn how to implement a secure smart contract (in python). This project can be chosen by an arbitrary number of students, with the idea that each student should implement a different smart contract for a toy application of his/her choice.
+
 [BioInformatics](http://datascience.i3s.uniroma1.it/it/node/5743)
 
-- [Protein Analysis](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW1-PPInteractions.pdf)
-- [Chagas Disease](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW2-Chagas.pdf)
-- [Neuro Analysis](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW3-Neural.pdf)
+- [HW1-Text](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW-1.pdf) | [Protein Analysis](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW1-PPInteractions.pdf)
+- [HW2-Text](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW-2.pdf) | [Chagas Disease](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW2-Chagas.pdf)
+- [HW3-Text](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW-3.pdf) | [Neuro Analysis](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW3-Neural.pdf)
 
 [Digital Epidemiology](http://datascience.i3s.uniroma1.it/it/node/5710)
 
