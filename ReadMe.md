@@ -1,6 +1,15 @@
 ## Data Science Masters at Sapienza University 
 I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma1.it) at Sapienza University in Rome, Italy and will publish some of my work.
 
+### Top 5 projects
+- [HW3-Text](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW-3.pdf) | [Neuro Analysis](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW3-Neural.pdf)
+- Bayesian Analysis with ARIMA model and MCMC technique of economic data [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/Final.Rmd)
+- [Infections Project](https://github.com/0x3W/MSc-Data-Science/blob/master/DE/1772953-HW1.ipynb)
+- [**Final Project**](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/Kaggle.py) based on [Kaggle Exercise on House Prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+- [HW2-Text](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW-2.pdf) | [Chagas Disease](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW2-Chagas.pdf)
+
+
+
 ### Semester I - Fall 2016
 
 #### [Fundamentals of Data Science](http://datascience.i3s.uniroma1.it/it/node/5742) - Labs
