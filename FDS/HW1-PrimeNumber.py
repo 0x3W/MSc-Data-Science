@@ -1,3 +1,5 @@
+# Identify a prime number
+
 import sys
 p = int(input('Tell me a number: '))
 
