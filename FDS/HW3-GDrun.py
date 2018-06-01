@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import csv
 
-IDlib = __import__("1772953-lib")
+IDlib = __import__("HW3-GDlib.py")
 
 f = open('wine.csv')
 X = list(csv.reader(f, delimiter=','))
