@@ -5,7 +5,7 @@ I am currently enrolled in [Data Science Program](http://datascience.i3s.uniroma
 - [HW3-Text](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW-3.pdf) | [Neuro Analysis](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW3-Neural.pdf)
 - Bayesian Analysis with ARIMA model and MCMC technique of economic data [.Rmd](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/Final.Rmd) [.pdf](https://github.com/0x3W/MSc-Data-Science/blob/master/SDS/SDSII%20-%20Final%20Project%20-%201772953.pdf)
 
-- [Infections Project](https://github.com/0x3W/MSc-Data-Science/blob/master/DE/1772953-HW1.ipynb)
+- Digital Epidemiology [Infections Project](https://github.com/0x3W/MSc-Data-Science/blob/master/DE/1772953-HW1.ipynb) on random and Erdos-Regni graphs
 - [**Final Project**](https://github.com/praeconium/MSc-Data-Science/blob/master/FDS/Kaggle.py) based on [Kaggle Exercise on House Prices](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
 - [HW2-Text](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW-2.pdf) | [Chagas Disease](https://github.com/0x3W/MSc-Data-Science/blob/master/Bio/HW2-Chagas.pdf)
 
